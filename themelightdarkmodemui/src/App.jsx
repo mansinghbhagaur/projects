@@ -1,12 +1,11 @@
-import { Box,  Typography } from '@mui/material';
+import { Box, } from '@mui/material';
 import Navbar from './theme/Navbar';
+import Users from './components/Users';
 
 const App = () => {
-
   return (<>
   <Navbar/>
     <Box sx={{
-      display: 'flex',
       width: '100%',
       alignItems: 'center',
       justifyContent: 'center',
@@ -16,7 +15,7 @@ const App = () => {
       p: 3,
       minHeight: '98vh',
     }}>
-      <Typography variant='h1' color={'secondary'}>App components</Typography>
+      <Users/>
     </Box></>
   )
 }
