@@ -3,14 +3,20 @@ import Class1 from "./hooks/Class1";
 import ThemeSwitcher from "./hooks/ThemeSwitcher";
 import Effect from "./hooks/Effect";
 import { ContextApi } from "./context/Context";
-import { Callback } from "./hooks/UseMemo";
+import UseMemo from "./hooks/UseMemo";
+import UseRef from "./hooks/UseRef";
+import UseLayoutEffect from "./hooks/UseLayoutEffect";
+import CounterApp from "./reducer/CounterApp";
 
 const App = () => {
   return (
     // <ContextApi.Provider value={'man'}>
     // <Effect />
     // </ContextApi.Provider>
-    <Callback />
+    // <UseMemo />
+    // <UseRef />
+    // <UseLayoutEffect />
+    <CounterApp />
   );
 };
 
