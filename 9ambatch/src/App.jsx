@@ -7,6 +7,8 @@ import UseMemo from "./hooks/UseMemo";
 import UseRef from "./hooks/UseRef";
 import UseLayoutEffect from "./hooks/UseLayoutEffect";
 import CounterApp from "./reducer/CounterApp";
+import ControlledCom from "./form/ControlledCom";
+import UncontrolledCom from "./form/UncontrolledCom";
 
 const App = () => {
   return (
@@ -16,7 +18,9 @@ const App = () => {
     // <UseMemo />
     // <UseRef />
     // <UseLayoutEffect />
-    <CounterApp />
+    // <CounterApp />
+    <ControlledCom />
+    // <UncontrolledCom />
   );
 };
 
