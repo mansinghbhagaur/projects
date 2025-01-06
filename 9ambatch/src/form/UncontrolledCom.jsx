@@ -1,24 +1,27 @@
 import React, { useRef } from 'react'
 
 const UncontrolledCom = () => {
-      const inputRef = useRef(null);
-
-      console.log(inputRef)
+      const usernameRef = useRef(null);
+      const fristNameRef = useRef(null);
 
       const handleSubmit = (e) => {
             e.preventDefault();
-            const value = inputRef.current.value;
-            console.log(value);
-            inputRef.current.value = ''
-
+            console.log(usernameRef.current.value);
+            console.log('fristNameRef', fristNameRef.current.value);
       }
 
       return (
             <div>
-                  <h1>Uncontrolled Com</h1>
+                  <h1>UncontrolledCom</h1>
                   <form onSubmit={handleSubmit}>
-                        <input type="text" ref={inputRef} />
-                        <button type='submit'>Submit</button>
+                        <label htmlFor="username">Username: </label>
+                        <input id="username" type='text' name="username" ref={usernameRef} />
+                        <br />
+                        <label htmlFor="firstName">FristName: </label>
+                        <input id="firstName" type='text' name="FistName" ref={fristNameRef} />
+                        <br />
+
+                        <input type="submit" />
                   </form>
             </div>
       )
