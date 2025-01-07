@@ -9,6 +9,7 @@ import UseLayoutEffect from "./hooks/UseLayoutEffect";
 import CounterApp from "./reducer/CounterApp";
 import ControlledCom from "./form/ControlledCom";
 import UncontrolledCom from "./form/UncontrolledCom";
+import FormValidation from "./form/FormValidation";
 
 const App = () => {
   return (
@@ -19,8 +20,9 @@ const App = () => {
     // <UseRef />
     // <UseLayoutEffect />
     // <CounterApp />
-    <ControlledCom />
+    // <ControlledCom />
     // <UncontrolledCom />
+    <FormValidation />
   );
 };
 
