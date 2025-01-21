@@ -6,15 +6,16 @@ import Typography from '@mui/material/Typography';
 import Button from '@mui/material/Button';
 import IconButton from '@mui/material/IconButton';
 import MenuIcon from '@mui/icons-material/Menu';
-import { Link, NavLink } from 'react-router';
+import { Link, NavLink, useParams } from 'react-router';
 
 export default function Header() {
+      const { id } = useParams();
       return (
             <Box sx={{ flexGrow: 1 }}>
                   <AppBar position="static">
                         <Toolbar>
                               <Typography variant="h6" component="div" sx={{ flexGrow: 3 }}>
-                                    router
+                                    router{id}
                               </Typography>
                               <Box>
                                     {/* link */}
