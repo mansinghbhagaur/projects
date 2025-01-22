@@ -1,7 +1,25 @@
 import React from 'react'
 import { ReusabeTable } from '../component/table/ReusableTable'
 import { Delete, Edit } from "@mui/icons-material"
+import BasicDialogBox from '../component/BasicDialogBox'
+import StudentForm from '../component/form/StudentForm'
 const Home = () => {
+
+      const [open, setOpen] = React.useState(false);
+      const [selectedRow, setSelectedRow] = React.useState('');
+
+      console.log(selectedRow)
+
+      const handleClickOpen = () => {
+            setOpen(true);
+      };
+      const handleClose = () => {
+            setOpen(false);
+            // selectedRow(null)
+            setSelectedRow('')
+      };
+
+
       const data = [
             { id: 1, name: 'John', mobile: 9999999999 },
             { id: 2, name: 'mohit', mobile: 8989898989 },
@@ -25,15 +43,25 @@ const Home = () => {
       const actions = [
             {
                   icon: <Edit color="primary" />,
-                  onClick: (row) => console.log('Edit button clicked', row),
+                  onClick: (row) => {
+                        setSelectedRow(row)
+                        setOpen(true)
+                  },
             },
             { icon: <Delete color='error' /> }
       ]
       return (
             <div>
-                  <ReusabeTable columns={columns} rows={data} actions={actions} width='md' />
-                  <ReusabeTable columns={column1} rows={Rowdata} />
-                  <ReusabeTable columns={column1} rows={Rowdata} width='xl' />
+                  <BasicDialogBox title={selectedRow ? "Update Form" : "Add Form"} formId={'student'} open={open} selectedRow={selectedRow}
+                        handleClickOpen={handleClickOpen} handleClose={handleClose} >
+                        <StudentForm formId="student" initialValue={selectedRow} />
+                  </BasicDialogBox>
+                  <ReusabeTable
+                        columns={columns}
+                        rows={data}
+                        actions={actions}
+                        width='md'
+                  />
             </div>
       )
 }
