@@ -21,9 +21,6 @@ const BootstrapDialog = styled(Dialog)(({ theme }) => ({
 export default function BasicDialogBox({ title, children, formId, open, handleClickOpen, handleClose, selectedRow }) {
       return (
             <React.Fragment>
-                  <Button variant="outlined" onClick={handleClickOpen}>
-                        Add
-                  </Button>
                   <BootstrapDialog
                         onClose={handleClose}
                         aria-labelledby="customized-dialog-title"

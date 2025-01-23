@@ -3,6 +3,7 @@ import { ReusabeTable } from '../component/table/ReusableTable'
 import { Delete, Edit } from "@mui/icons-material"
 import BasicDialogBox from '../component/BasicDialogBox'
 import StudentForm from '../component/form/StudentForm'
+import { Button } from '@mui/material'
 const Home = () => {
 
       const [open, setOpen] = React.useState(false);
@@ -52,15 +53,33 @@ const Home = () => {
       ]
       return (
             <div>
-                  <BasicDialogBox title={selectedRow ? "Update Form" : "Add Form"} formId={'student'} open={open} selectedRow={selectedRow}
-                        handleClickOpen={handleClickOpen} handleClose={handleClose} >
-                        <StudentForm formId="student" initialValue={selectedRow} />
-                  </BasicDialogBox>
+                  <Button variant="outlined" onClick={handleClickOpen}>
+                        Add
+                  </Button>
+                  {
+                        open && <BasicDialogBox title={selectedRow ? "Update Form" : "Add Form"} formId='student' open={open} selectedRow={selectedRow}
+                              handleClickOpen={handleClickOpen} handleClose={handleClose} >
+                              <StudentForm formId="student" initialValue={selectedRow} />
+                        </BasicDialogBox>
+                  }
+
                   <ReusabeTable
                         columns={columns}
                         rows={data}
                         actions={actions}
                         width='md'
+                        dynamicHeaderStyle={true}  // Enable dynamic header styling
+                        dynamicBodyStyle={true}   // Disable dynamic body styling
+                        headerStyle={{
+                              backgroundColor: '#f05',  // Override header background color
+                              fontSize: '1.1rem',           // Override header font size
+                              padding: '12px',              // Override header padding
+                        }}
+                        bodyStyle={{
+                              backgroundColor: '#eeeeee',  // Override body background color
+                              padding: '12px',
+                              fontSize: '1rem',
+                        }}
                   />
             </div>
       )
