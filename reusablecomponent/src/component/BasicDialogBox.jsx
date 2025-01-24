@@ -45,7 +45,7 @@ export default function BasicDialogBox({ title, children, formId, open, handleCl
                               {children}
                         </DialogContent>
                         <DialogActions>
-                              <Button autoFocus form={formId} type='submit' onClick={handleClose}>
+                              <Button autoFocus form={formId} type='submit'>
                                     {selectedRow ? 'Update' : 'Add'}
                               </Button>
                         </DialogActions>

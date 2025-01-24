@@ -3,13 +3,11 @@ import { ReusabeTable } from '../component/table/ReusableTable'
 import { Delete, Edit } from "@mui/icons-material"
 import BasicDialogBox from '../component/BasicDialogBox'
 import StudentForm from '../component/form/StudentForm'
-import { Button } from '@mui/material'
+import { Button, Grid2, Typography } from '@mui/material'
 const Home = () => {
 
       const [open, setOpen] = React.useState(false);
       const [selectedRow, setSelectedRow] = React.useState('');
-
-      console.log(selectedRow)
 
       const handleClickOpen = () => {
             setOpen(true);
@@ -53,13 +51,19 @@ const Home = () => {
       ]
       return (
             <div>
-                  <Button variant="outlined" onClick={handleClickOpen}>
-                        Add
-                  </Button>
+                  <Grid2 container spacing={1}>
+                        <Grid2 size={{ sm: 'auto' }} display={'flex'} sx={{ pt: 2, pl: 3, }}>
+                              <Typography variant='h6'>Todos</Typography>
+                              <Button variant="outlined" onClick={handleClickOpen} sx={{ ml: 3 }}>
+                                    Add
+                              </Button>
+                        </Grid2>
+                  </Grid2>
+
                   {
-                        open && <BasicDialogBox title={selectedRow ? "Update Form" : "Add Form"} formId='student' open={open} selectedRow={selectedRow}
+                        open && <BasicDialogBox title={selectedRow ? "Update Form" : "Add Form"} formId="student" open={open} selectedRow={selectedRow}
                               handleClickOpen={handleClickOpen} handleClose={handleClose} >
-                              <StudentForm formId="student" initialValue={selectedRow} />
+                              <StudentForm formId="student" initialValue={selectedRow} setOpen={setOpen} />
                         </BasicDialogBox>
                   }
 
