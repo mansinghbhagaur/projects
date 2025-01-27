@@ -1,7 +1,7 @@
 import { Grid2, TextField } from '@mui/material';
 import React from 'react';
 
-const StudentForm = ({ formId, initialValue = {}, setOpen }) => {
+const StudentForm = ({ formId, initialValue = {}, setOpen, dispatch }) => {
       // Defaulting initialValue to an empty object if not provided
       const [values, setValues] = React.useState({
             name: initialValue?.name || '', // Safely access name property
@@ -17,8 +17,9 @@ const StudentForm = ({ formId, initialValue = {}, setOpen }) => {
       // Handle form submit
       const handleSubmit = (e) => {
             e.preventDefault();
-            console.log(values);
+            dispatch({ type: 'ADD_TODO', payload: values })
             setOpen(false)
+
       };
 
       return (

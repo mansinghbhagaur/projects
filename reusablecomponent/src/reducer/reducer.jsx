@@ -1,4 +1,4 @@
-const reducer = (state, action) => {
+export const reducer = (state, action) => {
       switch (action.type) {
             case 'ADD_TODO': return [...state, { id: Date.now(), ...action.payload }];
             case 'EDIT_TODO': return state.map((item) => (

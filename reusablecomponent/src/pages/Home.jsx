@@ -4,10 +4,16 @@ import { Delete, Edit } from "@mui/icons-material"
 import BasicDialogBox from '../component/BasicDialogBox'
 import StudentForm from '../component/form/StudentForm'
 import { Button, Grid2, Typography } from '@mui/material'
+import useLocalStorageHook from '../hooks/useLocalStorageHook'
+import { reducer } from '../reducer/reducer'
+
 const Home = () => {
 
       const [open, setOpen] = React.useState(false);
       const [selectedRow, setSelectedRow] = React.useState('');
+
+      const [state, dispatch] = useLocalStorageHook('tasks', reducer, []);
+
 
       const handleClickOpen = () => {
             setOpen(true);
@@ -18,22 +24,7 @@ const Home = () => {
             setSelectedRow('')
       };
 
-
-      const data = [
-            { id: 1, name: 'John', mobile: 9999999999 },
-            { id: 2, name: 'mohit', mobile: 8989898989 },
-      ]
       const columns = [
-            { field: 'id', headerName: 'ID' },
-            { field: 'name', headerName: 'Name' },
-            { field: 'mobile', headerName: 'Mobile No' },
-      ]
-
-      const Rowdata = [
-            { id: 1, name: 'man', mobile: 9999999999 },
-            { id: 2, name: 'xyz', mobile: 8989898989 },
-      ]
-      const column1 = [
             { field: 'id', headerName: 'ID' },
             { field: 'name', headerName: 'Name' },
             { field: 'mobile', headerName: 'Mobile No' },
@@ -63,13 +54,13 @@ const Home = () => {
                   {
                         open && <BasicDialogBox title={selectedRow ? "Update Form" : "Add Form"} formId="student" open={open} selectedRow={selectedRow}
                               handleClickOpen={handleClickOpen} handleClose={handleClose} >
-                              <StudentForm formId="student" initialValue={selectedRow} setOpen={setOpen} />
+                              <StudentForm formId="student" initialValue={selectedRow} setOpen={setOpen} dispatch={dispatch} />
                         </BasicDialogBox>
                   }
 
                   <ReusabeTable
                         columns={columns}
-                        rows={data}
+                        rows={state}
                         actions={actions}
                         width='md'
                         dynamicHeaderStyle={true}  // Enable dynamic header styling
