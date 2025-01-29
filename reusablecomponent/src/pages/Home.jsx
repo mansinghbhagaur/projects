@@ -25,7 +25,7 @@ const Home = () => {
       };
 
       const columns = [
-            { field: 'id', headerName: 'ID' },
+            // { field: 'id', headerName: 'ID' },
             { field: 'name', headerName: 'Name' },
             { field: 'mobile', headerName: 'Mobile No' },
       ]
@@ -38,14 +38,18 @@ const Home = () => {
                         setOpen(true)
                   },
             },
-            { icon: <Delete color='error' /> }
+            {
+                  icon: <Delete color='error' />,
+                  onClick: (row) => { dispatch({ type: 'DELETE_TODO', payload: row }) }
+            },
+
       ]
       return (
             <div>
                   <Grid2 container spacing={1}>
                         <Grid2 size={{ sm: 'auto' }} display={'flex'} sx={{ pt: 2, pl: 3, }}>
                               <Typography variant='h6'>Todos</Typography>
-                              <Button variant="outlined" onClick={handleClickOpen} sx={{ ml: 3 }}>
+                              <Button variant="outlined" onClick={() => { handleClickOpen(); setSelectedRow('') }} sx={{ ml: 3 }}>
                                     Add
                               </Button>
                         </Grid2>
@@ -63,10 +67,10 @@ const Home = () => {
                         rows={state}
                         actions={actions}
                         width='md'
-                        dynamicHeaderStyle={true}  // Enable dynamic header styling
                         dynamicBodyStyle={true}   // Disable dynamic body styling
+                        dynamicHeaderStyle={true}  // Enable dynamic header styling
                         headerStyle={{
-                              backgroundColor: '#f05',  // Override header background color
+                              backgroundColor: 'green',  // Override header background color
                               fontSize: '1.1rem',           // Override header font size
                               padding: '12px',              // Override header padding
                         }}
