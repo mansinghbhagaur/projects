@@ -1,26 +1,10 @@
 import React from 'react'
-import { Route, Routes } from 'react-router'
-import Home from '../pages/Home'
-import About from '../pages/About'
-import Contact from '../pages/Contact'
-import Errors from '../pages/Errors'
-import Header from '../components/Header'
-import Layout from '../Layout/Layout'
+import { useNavigate } from 'react-router';
 
-const PublicRoute = () => {
-      return (
-            <>
-                  <Routes>
-                        <Route path="/" element={<Layout />}>
-                              <Route path="/" element={<Home />} />
-                              <Route path="/about/:id" element={<About />} />
-                              <Route path="/contact" element={<Contact />} />
-                              <Route path="*" element={<Errors />} />
-                        </Route>
-
-                  </Routes>
-            </>
-      )
+const PublicRoute = ({ children }) => {
+      const Navigate = useNavigate();
+      const isAuth = false;
+      return isAuth ? children : <Navigate to="/login" replace={true} />
 }
 
 export default PublicRoute
