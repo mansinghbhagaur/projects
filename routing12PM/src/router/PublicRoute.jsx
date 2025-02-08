@@ -1,10 +1,9 @@
-import React from 'react'
-import { useNavigate } from 'react-router';
+import { useNavigate } from "react-router";
+import { Outlet } from "react-router";
 
-const PublicRoute = ({ children }) => {
-      const Navigate = useNavigate();
-      const isAuth = false;
-      return isAuth ? children : <Navigate to="/login" replace={true} />
+const PublicRoute = ({ isAuth }) => {
+      const navigate = useNavigate();
+      return isAuth ? <Outlet /> : navigate('/');
 }
 
-export default PublicRoute
+export default PublicRoute;

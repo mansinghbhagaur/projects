@@ -1,3 +1,21 @@
+// import React from 'react'
+// import { useParams } from 'react-router'
+
+// const Contact = () => {
+//       const { id } = useParams();
+//       return (
+//             <div>{id}
+//                   <h1>Contact us</h1>
+//             </div>
+//       )
+// }
+
+// export default Contact
+
+
+
+
+
 import React from 'react'
 import { useSearchParams } from 'react-router'
 

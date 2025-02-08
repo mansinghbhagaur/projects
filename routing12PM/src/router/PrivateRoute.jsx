@@ -1,9 +1,7 @@
-import React from 'react'
-import { Navigate, Outlet } from 'react-router';
+import { Navigate, Outlet } from "react-router"
 
 const PrivateRoute = ({ isAuth }) => {
-
-      return isAuth ? <Outlet /> : <Navigate to="/" replace={true} />;
+      return isAuth ? <Outlet /> : <Navigate to="/" />
 }
 
-export default PrivateRoute
+export default PrivateRoute;
