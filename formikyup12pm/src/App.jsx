@@ -1,46 +1,76 @@
-import { useFormik } from 'formik'
-import React from 'react'
+import { Container, Grid2, Paper, TextField } from "@mui/material";
+import { useFormik } from "formik";
 
 const App = () => {
-  const formik = useFormik({
-    initialValues: {
-      name: '',
-      email: ''
-    },
-    validate: (values) => {
-      const errors = {};
-      if (!values.name) errors.name = "Name is Required";
-      if (!values.email) errors.email = "Email is Required";
-      return errors;
-    },
-
-    onSubmit: (values) => {
-      console.log(values)
-    }
-
-  });
-  // console.log('formik', formik);
-  console.log(formik.errors)
-
   return (
-    <div style={{
-      display: 'flex',
-      flexDirection: 'column',
-      alignItems: 'center'
-    }}>
-      <h1 style={{ textAlign: 'center', marginBottom: 30, marginTop: 20 }}>My App Form</h1>
-      <form onSubmit={formik.handleSubmit}>
-        <label>Name: </label>
-        <input type="text" name="name" value={formik.values.name} onChange={formik.handleChange} />
-        <br /><br />
-        {formik.errors && formik.errors.name && <div style={{ color: 'red' }}>{formik.errors.name}</div>}
-        <label>Email: </label>
-        <input type="email" name='email' value={formik.values.email} onChange={formik.handleChange} />
-        <br /><br />
-        <input type="submit" />
-      </form>
-    </div>
+    <Container maxWidth="sm">
+      <Paper elevation={20} sx={{ p: 2, mt: 5 }}>
+        <Grid2 container spacing={2}>
+          <Grid2 size={{ sm: 12 }}>
+            <TextField fullWidth />
+          </Grid2>
+
+          <Grid2 size={{ sm: 12 }}>
+            <TextField fullWidth />
+          </Grid2>
+        </Grid2>
+      </Paper>
+    </Container>
   )
 }
 
-export default App
+
+export default App;
+
+
+
+
+
+
+// import { useFormik } from 'formik'
+// import React from 'react'
+
+// const App = () => {
+//   const formik = useFormik({
+//     initialValues: {
+//       name: '',
+//       email: ''
+//     },
+//     validate: (values) => {
+//       const errors = {};
+//       if (!values.name) errors.name = "Name is Required";
+//       if (!values.email) errors.email = "Email is Required";
+//       return errors;
+//     },
+
+//     onSubmit: (values, { resetForm }) => {
+//       console.log(values)
+//       resetForm();
+//     }
+//   });
+//   // console.log('formik', formik);
+//   // console.log(formik.errors)
+
+//   return (
+//     <div style={{
+//       display: 'flex',
+//       flexDirection: 'column',
+//       alignItems: 'center'
+//     }}>
+//       <h1 style={{ textAlign: 'center', marginBottom: 30, marginTop: 20 }}>My App Form</h1>
+//       <form onSubmit={formik.handleSubmit}>
+//         <label>Name: </label>
+//         <input type="text" name="name" value={formik.values.name} onChange={formik.handleChange} />
+//         <br /><br />
+//         {formik.errors && formik.errors.name && <div style={{ color: 'red' }}>{formik.errors.name}</div>}
+//         <label>Email: </label>
+//         <input type="email" name='email' value={formik.values.email} onChange={formik.handleChange} />
+//         <br /><br />
+//         {formik.errors && formik.errors.email && <div style={{ color: 'red' }}>{formik.errors.email}</div>}
+//         <input type="submit" />
+//       </form>
+//     </div>
+//   )
+// }
+
+// export default App
