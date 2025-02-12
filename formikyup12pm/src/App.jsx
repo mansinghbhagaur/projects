@@ -2,7 +2,7 @@ import { Button, Container, Grid2, Paper, TextField, Typography } from "@mui/mat
 import { useFormik } from "formik";
 
 const App = () => {
-  const { values, errors, handleChange, handleSubmit } = useFormik({
+  const { values, touched, errors, handleChange, handleSubmit } = useFormik({
     initialValues: {
       email: "",
       password: "",
@@ -28,11 +28,11 @@ const App = () => {
         <Typography variant="h5" fontWeight={800} textAlign='center' gutterBottom>Form Formik</Typography>
         <Grid2 container spacing={2}>
           <Grid2 size={{ sm: 12 }}>
-            <TextField fullWidth size="small" name="email" value={values.email || ""} onChange={handleChange} label="Email" placeholder="Enter Your Email" />
+            <TextField error={touched.email && errors.email} helperText={touched.email && errors.email} fullWidth size="small" name="email" value={values.email || ""} onChange={handleChange} label="Email" placeholder="Enter Your Email" />
           </Grid2>
 
           <Grid2 size={{ sm: 12 }}>
-            <TextField fullWidth size="small" name="password" value={values.password || ""} onChange={handleChange} label="Password" placeholder="Enter Your Password" />
+            <TextField fullWidth size="small" error={errors.password} helperText={errors.password} name="password" value={values.password || ""} onChange={handleChange} label="Password" placeholder="Enter Your Password" />
           </Grid2>
 
           <Grid2 size={{ xs: 4 }}>
