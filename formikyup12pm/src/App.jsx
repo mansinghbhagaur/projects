@@ -1,19 +1,45 @@
-import { Container, Grid2, Paper, TextField } from "@mui/material";
+import { Button, Container, Grid2, Paper, TextField, Typography } from "@mui/material";
 import { useFormik } from "formik";
 
 const App = () => {
+  const { values, errors, handleChange, handleSubmit } = useFormik({
+    initialValues: {
+      email: "",
+      password: "",
+    },
+    validate: (values) => {
+      const errors = {};
+      if (!values.email) errors.email = "Email is required";
+      if (!values.password) errors.password = "Password is required";
+      return errors;
+    },
+    onSubmit: (values, { resetForm }) => {
+      console.log(values);
+      resetForm();
+    }
+
+  });
+
+  console.log(errors);
+
   return (
     <Container maxWidth="sm">
-      <Paper elevation={20} sx={{ p: 2, mt: 5 }}>
+      <Paper elevation={20} sx={{ p: 2, mt: 5 }} component={'form'} onSubmit={handleSubmit} >
+        <Typography variant="h5" fontWeight={800} textAlign='center' gutterBottom>Form Formik</Typography>
         <Grid2 container spacing={2}>
           <Grid2 size={{ sm: 12 }}>
-            <TextField fullWidth />
+            <TextField fullWidth size="small" name="email" value={values.email || ""} onChange={handleChange} label="Email" placeholder="Enter Your Email" />
           </Grid2>
 
           <Grid2 size={{ sm: 12 }}>
-            <TextField fullWidth />
+            <TextField fullWidth size="small" name="password" value={values.password || ""} onChange={handleChange} label="Password" placeholder="Enter Your Password" />
+          </Grid2>
+
+          <Grid2 size={{ xs: 4 }}>
+            <Button type="submit" variant="outlined">Submit</Button>
           </Grid2>
         </Grid2>
+
       </Paper>
     </Container>
   )
