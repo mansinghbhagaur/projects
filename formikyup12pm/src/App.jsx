@@ -5,20 +5,21 @@ import { useFormik } from "formik";
 import * as Yup from "yup"; // eslint-disable-line no-unused-vars
 
 const App = () => {
-  const { values, touched, errors, handleChange, handleSubmit } = useFormik({
+  const { values, touched, handleBlur, errors, handleChange, handleSubmit } = useFormik({
     initialValues: {
       email: "",
       password: "",
     },
     validationSchema: Yup.object({
       email: Yup.string().required().email('Invalid Email'),
-      password: Yup.number().required("Pass is required").min('6', "minium 6 charactor").max('15'),
+      password: Yup.string().required("Pass is required").min('5', 'minium 5 digit').max('8', "maximum 8 digit"),
     }),
     onSubmit: (values, { resetForm }) => {
       console.log(values);
       resetForm();
-    }
-
+    },
+    validateOnChange: false,
+    validateOnBlur: false,
   });
 
   console.table(errors);
@@ -30,11 +31,11 @@ const App = () => {
         <Typography variant="h5" fontWeight={800} textAlign='center' gutterBottom>Form Formik</Typography>
         <Grid2 container spacing={2}>
           <Grid2 size={{ sm: 12 }}>
-            <TextField fullWidth size="small" name="email" value={values.email || ""} onChange={handleChange} label="Email" placeholder="Enter Your Email" />
+            <TextField fullWidth size="small" error={errors.email || touched.email} onBlur={handleBlur} helperText={errors.email || touched.email} name="email" value={values.email || ""} onChange={handleChange} label="Email" placeholder="Enter Your Email" />
           </Grid2>
 
           <Grid2 size={{ sm: 12 }}>
-            <TextField fullWidth size="small" name="password" value={values.password || ""} onChange={handleChange} label="Password" placeholder="Enter Your Password" />
+            <TextField fullWidth size="small" error={touched.password && errors.password} onBlur={handleBlur} helperText={touched.password && errors.password} name="password" value={values.password || ""} onChange={handleChange} label="Password" placeholder="Enter Your Password" />
           </Grid2>
 
           <Grid2 size={{ xs: 4 }}>
