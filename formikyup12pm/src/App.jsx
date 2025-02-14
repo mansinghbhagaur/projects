@@ -2,7 +2,7 @@
 
 import { Button, Container, Grid2, Paper, TextField, Typography } from "@mui/material";
 import { useFormik } from "formik";
-import * as Yup from "yup";
+import * as Yup from "yup"; // eslint-disable-line no-unused-vars
 
 const App = () => {
   const { values, touched, errors, handleChange, handleSubmit } = useFormik({
